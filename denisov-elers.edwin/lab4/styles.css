@@ -10,7 +10,7 @@ main {
   padding: 20px;
 }
 
-#order-form {
+.order-form {
   margin-bottom: 20px;
   padding: 10px;
   background-color: lightgreen;
@@ -18,7 +18,7 @@ main {
   width: fit-content;
 }
 
-#orders {
+.orders {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
