@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('http://fonts.gstatic.com/s/roboto/v15/mErvLBYg_cXG3rLvUsKT_fesZW2xOQ-xsNqO47m55DA.woff2');
+}
+
+body {
+  margin: 0;
+}
+
+.card {
+  width: 350px;
+  font-family: Roboto, sans-serif;
+  border-radius: 8px;
+  border-style: groove;
+  border-color: black;
+  background-color: gray;
+  margin: auto;
+}
+
+.product-image {
+  width: 350px;
+  height: 200px;
+  padding-right: 6px;
+}
+
+.product {
+  padding: 15px;
+}
+
+.title {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.reviews-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.review {
+  margin-top: 10px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.review-text {
+  font-size: 14px;
+  font-weight: normal;
+}
