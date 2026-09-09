@@ -9,9 +9,6 @@ body {
 .card {
   width: 350px;
   font-family: Roboto, sans-serif;
-  border-radius: 8px;
-  border-style: groove;
-  border-color: black;
   background-color: gray;
   margin: auto;
 }
@@ -19,7 +16,6 @@ body {
 .product-image {
   width: 350px;
   height: 200px;
-  padding-right: 6px;
 }
 
 .product {
