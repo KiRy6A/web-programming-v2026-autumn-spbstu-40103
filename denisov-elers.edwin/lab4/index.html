@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная работа 4</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Лабораторная работа 4</h1>
+      <form id="order-form" class="order-form" data-testid="entity-form">
+        <label>
+          ID заказа
+          <input type="number" name="orderId" required />
+        </label>
+        <label>
+          Статус
+          <select name="status" required>
+            <option value="new">new</option>
+            <option value="processing">processing</option>
+            <option value="completed">completed</option>
+          </select>
+        </label>
+        <button type="submit">Добавить заказ</button>
+      </form>
+      <section
+        id="orders"
+        class="orders"
+        data-testid="entity-list"
+        aria-label="Список заказов"
+      ></section>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
