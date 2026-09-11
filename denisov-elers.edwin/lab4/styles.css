@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+.order-form {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: lightgreen;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.orders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.card {
+  background-color: greenyellow;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card .item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
