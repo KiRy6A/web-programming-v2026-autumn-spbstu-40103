@@ -42,7 +42,7 @@ function renderUI() {
       .join('')}
     </ul>
 
-    <form class="add-dish-form" style="margin-top: 10px; margin-bottom: 10px;">
+    <form class="add-dish-form">
       <input type="text" name="dishName" placeholder="Название блюда" required>
       <input type="number" name="dishPrice" placeholder="Цена" required>
       <button class="add-dish" type="submit">Добавить блюдо</button>
@@ -68,7 +68,7 @@ function renderUI() {
       }
     });
 
-    const deleteDishBtns = card.querySelectorAll('.card ul .deleteX');
+    const deleteDishBtns = card.querySelectorAll('.card ul .delete-x');
     for (const b of deleteDishBtns) {
       b.addEventListener('click', () => {
         const dishName = b.getAttribute('data-name');

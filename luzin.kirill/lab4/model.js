@@ -35,9 +35,11 @@ export function groupRestaurantsByMenuSize(restaurants) {
 export function getUniqueDishes(restaurants) {
   const set = new Set();
 
-  for (r of restaurants) {
-    for (dish of r.menu) {
-      set.add(dish.name);
+  for (const r of restaurants) {
+    for (const dish of r.menu) {
+      if (!set.has(dish.name)) {
+        set.add(dish.name);
+      }
     }
   }
 
@@ -47,8 +49,8 @@ export function getUniqueDishes(restaurants) {
 export function findRestaurantsByDish(restaurants, dishName) {
   const result = [];
 
-  for (r of restaurants) {
-    for (dish of r.menu) {
+  for (const r of restaurants) {
+    for (const dish of r.menu) {
       if (dishName === dish.name) {
         result.push(r);
         break;
@@ -62,14 +64,14 @@ export function findRestaurantsByDish(restaurants, dishName) {
 export function groupDishesByPriceRange(restaurants) {
   const ranges = {};
 
-  for (r of restaurants) {
-    for (dish of r.menu) {
-      const costRange = (dish.price / 100) * 100;
+  for (const r of restaurants) {
+    for (const dish of r.menu) {
+      const costRange = (Math.floor(dish.price / 100) + 1) * 100;
 
       if (!ranges[costRange]) {
         ranges[costRange] = [];
       }
-      ranges[costRange] = push(dish.name);
+      ranges[costRange].push(dish.name);
     }
   }
 
