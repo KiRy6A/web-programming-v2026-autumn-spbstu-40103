@@ -18,15 +18,16 @@ export class Restaurant {
 }
 
 export function groupRestaurantsByMenuSize(restaurants) {
-  const result = {};
+  const result = new Map();
 
   for (const r of restaurants) {
     const menuSize = r.menu.length;
 
-    if (!result[menuSize]) {
-      result[menuSize] = [];
+    if (!result.has(menuSize)) {
+      result.set(menuSize, []);
     }
-    result[menuSize].push(r);
+
+    result.get(menuSize).push(r);
   }
 
   return result;
@@ -62,16 +63,16 @@ export function findRestaurantsByDish(restaurants, dishName) {
 }
 
 export function groupDishesByPriceRange(restaurants) {
-  const ranges = {};
+  const ranges = new Map();
 
   for (const r of restaurants) {
     for (const dish of r.menu) {
       const costRange = (Math.floor(dish.price / 100) + 1) * 100;
 
-      if (!ranges[costRange]) {
-        ranges[costRange] = [];
+      if (!ranges.has(costRange)) {
+        ranges.set(costRange, []);
       }
-      ranges[costRange].push(dish.name);
+      ranges.get(costRange).push(dish.name);
     }
   }
 
