@@ -67,7 +67,7 @@ export function groupDishesByPriceRange(restaurants) {
 
   for (const r of restaurants) {
     for (const dish of r.menu) {
-      const costRange = (Math.floor(dish.price / 100) + 1) * 100;
+      const costRange = (Math.floor((dish.price - 1) / 100) + 1) * 100;
 
       if (!ranges.has(costRange)) {
         ranges.set(costRange, []);

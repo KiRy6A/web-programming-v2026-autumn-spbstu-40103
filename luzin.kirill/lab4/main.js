@@ -36,7 +36,7 @@ function renderUI() {
         (dish) => `
       <li>
         ${dish.name} —${dish.price} руб. 
-        <button class="deleteX" data-name="${dish.name}">X</button>
+        <button class="delete-x" data-name="${dish.name}">X</button>
       </li>`,
       )
       .join('')}
