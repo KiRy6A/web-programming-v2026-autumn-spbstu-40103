@@ -3,31 +3,27 @@ import {createRoot} from 'react-dom/client';
 import './styles.css';
 
 import {getWeatherInfo} from './wmo.js';
+import {MOCK_DB} from './database.js';
 
 async function getWeatherForCity(rawName, interval) {
+  await new Promise((resolve) => setTimeout(resolve, 400));
+
   const normalized = rawName.trim().toLowerCase();
-  const urlGeocode = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(normalized)}&count=1&language=ru`;
+  const cityData = MOCK_DB[normalized];
 
-  const responseCity = await fetch(urlGeocode);
-  if (!responseCity.ok) {
-    throw new Error('City response not ok');
-  }
-
-  const geoData = await responseCity.json();
-  if (!geoData.results || geoData.results.length === 0) {
+  if (!cityData) {
     throw new Error(`City not found: ${normalized}`);
   }
 
-  const {latitude, longitude} = geoData.results[0];
-  const urlWeather = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,surface_pressure,wind_speed_10m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=${interval}`;
-
-  const responseWeather = await fetch(urlWeather);
-  if (!responseWeather.ok) {
-    throw new Error('City response not ok');
-  }
-
-  const data = await responseWeather.json();
-  return data;
+  return {
+    current: cityData.current,
+    daily: {
+      time: cityData.daily.time.slice(0, interval),
+      weather_code: cityData.daily.weather_code.slice(0, interval),
+      temperature_2m_max: cityData.daily.temperature_2m_max.slice(0, interval),
+      temperature_2m_min: cityData.daily.temperature_2m_min.slice(0, interval),
+    },
+  };
 }
 
 function App() {
@@ -112,7 +108,7 @@ function App() {
         <h1>Прогноз погоды</h1>
       </header>
 
-      {/* Форма поиска */}
+      {}
       <form className="search-form" onSubmit={handleCitySubmit}>
         <input
           type="text"
