@@ -3,6 +3,7 @@
 }
 
 body {
+  max-width: 1060px;
   font-family: sans-serif;
   background: white;
   color: black;
@@ -10,16 +11,18 @@ body {
 }
 
 .weather-app {
-  max-width: 1060px;
-  margin: auto;
-  background: #cde5ff;
   border-radius: 16px;
   padding: 28px;
 }
 
 .app-header {
-  background: #cde5ff;
+  text-align: center;
+  width: 300px;
+  border-radius: 16px;
+  background: #9fcdff;
   margin-bottom: 20px;
+  font-size: 12pt;
+  padding: 10px;
 }
 
 .search-form {
