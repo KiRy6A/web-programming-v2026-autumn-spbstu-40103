@@ -103,7 +103,7 @@ function App() {
   };
 
   return (
-    <div>
+    <main data-testid="app" className="weather-app">
       <header className="app-header">
         <h1>Прогноз погоды</h1>
       </header>
@@ -137,7 +137,7 @@ function App() {
         </div>
       )}
 
-      {weatherData && !error && (
+      {weatherData && (
         <>
           <section
             data-testid="weather-current"
@@ -225,11 +225,11 @@ function App() {
           </section>
         </>
       )}
-    </div>
+    </main>
   );
 }
 
-createRoot(document.getElementById('weather-app')).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
   </StrictMode>,
