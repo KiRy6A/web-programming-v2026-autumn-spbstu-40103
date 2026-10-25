@@ -108,7 +108,6 @@ function App() {
         <h1>Прогноз погоды</h1>
       </header>
 
-      {}
       <form className="search-form" onSubmit={handleCitySubmit}>
         <input
           type="text"
@@ -137,12 +136,13 @@ function App() {
         </div>
       )}
 
-      {weatherData && (
-        <>
-          <section
-            data-testid="weather-current"
-            className="current-weather-card"
-          >
+      <section
+        data-testid="weather-current"
+        className="current-weather-card"
+        style={{display: weatherData ? 'block' : 'none'}}
+      >
+        {weatherData && (
+          <>
             <div className="current-main">
               <div>
                 <h2 className="city-title">{weatherData.city}</h2>
@@ -184,47 +184,46 @@ function App() {
                 </span>
               </div>
             </div>
-          </section>
+          </>
+        )}
+      </section>
 
-          <div className="interval-controls">
-            <h2>Прогноз:</h2>
-            <div className="interval-buttons">
-              {[1, 3, 7].map((days) => (
-                <button
-                  key={days}
-                  type="button"
-                  data-testid={`interval-${days}`}
-                  className={`interval-btn ${daysInterval === days ? 'active' : ''}`}
-                  onClick={() => setDaysInterval(days)}
-                >
-                  {days} {days === 1 ? 'день' : 'дня/дней'}
-                </button>
-              ))}
-            </div>
-          </div>
+      <div className="interval-controls">
+        <h2>Прогноз:</h2>
+        <div className="interval-buttons">
+          {[1, 3, 7].map((days) => (
+            <button
+              key={days}
+              type="button"
+              data-testid={`interval-${days}`}
+              className={`interval-btn ${daysInterval === days ? 'active' : ''}`}
+              onClick={() => setDaysInterval(days)}
+            >
+              {days} {days === 1 ? 'день' : 'дня/дней'}
+            </button>
+          ))}
+        </div>
+      </div>
 
-          <section data-testid="weather-forecast" className="forecast-grid">
-            {weatherData.forecast.map((item, index) => (
-              <article key={index} className="forecast-card">
-                <div className="forecast-day">{item.day}</div>
-                <div className="forecast-icon">{item.icon}</div>
-                <div className="forecast-condition">{item.condition}</div>
-                <div className="forecast-temps">
-                  <div className="temp-day">
-                    Днём: {item.tempDay > 0 ? `+${item.tempDay}` : item.tempDay}
-                    °C
-                  </div>
-                  <div className="temp-night">
-                    Ночью:{' '}
-                    {item.tempNight > 0 ? `+${item.tempNight}` : item.tempNight}
-                    °C
-                  </div>
+      <section data-testid="weather-forecast" className="forecast-grid">
+        {weatherData &&
+          weatherData.forecast.map((item, index) => (
+            <article key={index} className="forecast-card">
+              <div className="forecast-day">{item.day}</div>
+              <div className="forecast-icon">{item.icon}</div>
+              <div className="forecast-condition">{item.condition}</div>
+              <div className="forecast-temps">
+                <div className="temp-day">
+                  Днём: {item.tempDay > 0 ? `+${item.tempDay}` : item.tempDay}°C
                 </div>
-              </article>
-            ))}
-          </section>
-        </>
-      )}
+                <div className="temp-night">
+                  Ночью:{' '}
+                  {item.tempNight > 0 ? `+${item.tempNight}` : item.tempNight}°C
+                </div>
+              </div>
+            </article>
+          ))}
+      </section>
     </main>
   );
 }
